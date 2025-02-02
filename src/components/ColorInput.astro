@@ -1,0 +1,45 @@
+---
+
+---
+
+<div
+  class="relative border-gray-200 bg-white shadow-md form-control border rounded-full"
+>
+  <div
+    class="top-1/2 left-4 absolute flex justify-center items-center m-0 p-0 rounded-full w-6 h-6 transform -translate-y-1/2 cursor-pointer overflow-hidden"
+  >
+    <input type="color" class="top-0 m-0 p-0 w-10 h-10 shrink-0" />
+  </div>
+  <input
+    type="text"
+    placeholder="Hexcode"
+    class="bg-transparent px-4 py-4 pl-12 rounded-full w-full outline-gray-300"
+  />
+</div>
+
+<script>
+  import { getState, subscribe, setState } from "../shared/store/colorStore";
+
+  const colorInput = document.querySelector<HTMLInputElement>(
+    "input[type='color']"
+  );
+  const hexInput =
+    document.querySelector<HTMLInputElement>("input[type='text']");
+
+  subscribe(({ currentColor }) => {
+    if (hexInput) {
+      hexInput.value = currentColor;
+    }
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    if (colorInput) colorInput.value = getState().currentColor;
+    if (hexInput) hexInput.value = getState().currentColor;
+
+    colorInput?.addEventListener("input", (e) => {
+      if (hexInput && e.target instanceof HTMLInputElement) {
+        getState().setCurrentColor(e.target.value);
+      }
+    });
+  });
+</script>
