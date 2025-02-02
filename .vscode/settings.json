@@ -12,5 +12,6 @@
 		"astro", // Enable .astro
 		"typescript", // Enable .ts
 		"typescriptreact" // Enable .tsx
-	]
+	],
+	"editor.formatOnSave": true,
 }
