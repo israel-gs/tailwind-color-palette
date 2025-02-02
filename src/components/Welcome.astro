@@ -1,7 +1,36 @@
 ---
 import "../styles/global.css";
+import ColorInput from "./ColorInput.astro";
+import { Toaster } from "sonner";
+import ColorVariantList from "./ColorVariantList";
 ---
 
-<div>
-  <h1 class="text-xl">Hola Mundo</h1>
+<div class="mx-auto mt-8 md:mt-16 mb-8 px-6 max-w-5xl">
+  <div class="md:mb-8 text-center">
+    <div class="font-bold font-display text-3xl text-color md:text-5xl">
+      Tailwind CSS<br />Color Generator
+    </div>
+  </div>
+
+  <div class="mx-auto max-w-lg">
+    <div class="space-y-6">
+      <div>
+        <div class="md:relative right-4 bottom-4 left-4 z-40 fixed md:inset-0">
+          <ColorInput client:load />
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+<div class="space-y-8 mx-auto px-6 pb-24 max-w-5xl">
+  <div>
+    <div class="md:flex items-center mb-4">
+      <div class="flex-grow text-center text-color text-lg md:text-left">
+        Sulu
+      </div>
+    </div>
+    <ColorVariantList client:only="react" />
+  </div>
+</div>
+
+<Toaster position="top-center" client:load expand visibleToasts={1} />
