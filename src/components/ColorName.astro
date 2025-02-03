@@ -1,0 +1,21 @@
+---
+
+---
+
+<div
+  class="flex-grow text-center text-color text-lg md:text-left"
+  data-color-name
+>
+  Sulu
+</div>
+<script>
+  import { subscribe } from "../shared/store/colorStore";
+
+  const $colorName = document.querySelector("[data-color-name]");
+
+  subscribe(({ colorName }) => {
+    if ($colorName) {
+      $colorName.textContent = colorName;
+    }
+  });
+</script>
