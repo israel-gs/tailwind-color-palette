@@ -27,8 +27,9 @@
     document.querySelector<HTMLInputElement>("input[type='text']");
 
   subscribe(({ currentColor }) => {
-    if (hexInput) {
+    if (hexInput && colorInput) {
       hexInput.value = currentColor;
+      colorInput.value = currentColor;
     }
   });
 
@@ -38,6 +39,12 @@
 
     colorInput?.addEventListener("input", (e) => {
       if (hexInput && e.target instanceof HTMLInputElement) {
+        getState().setCurrentColor(e.target.value);
+      }
+    });
+
+    hexInput?.addEventListener("input", (e) => {
+      if (colorInput && e.target instanceof HTMLInputElement) {
         getState().setCurrentColor(e.target.value);
       }
     });
