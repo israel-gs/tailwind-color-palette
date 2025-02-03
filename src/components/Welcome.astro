@@ -3,6 +3,7 @@ import "../styles/global.css";
 import ColorInput from "./ColorInput.astro";
 import { Toaster } from "sonner";
 import ColorVariantList from "./ColorVariantList";
+import ColorName from "./ColorName.astro";
 ---
 
 <div class="mx-auto mt-8 md:mt-16 mb-8 px-6 max-w-5xl">
@@ -25,9 +26,7 @@ import ColorVariantList from "./ColorVariantList";
 <div class="space-y-8 mx-auto px-6 pb-24 max-w-5xl">
   <div>
     <div class="md:flex items-center mb-4">
-      <div class="flex-grow text-center text-color text-lg md:text-left">
-        Sulu
-      </div>
+      <ColorName client:load />
     </div>
     <ColorVariantList client:only="react" />
   </div>
